@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="css" scoped>
 #app {
   position: absolute;
   left: 0%;

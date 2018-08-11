@@ -32,7 +32,7 @@ const config = {
         ]
       },
       {
-        test: '/\.styl/',
+        test: /\.styl/,
         use: [
           'style-loader',
           'css-loader',
