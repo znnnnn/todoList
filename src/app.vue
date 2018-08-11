@@ -1,15 +1,19 @@
 <template>
   <div id="app">
     <div id="cover"></div>
+    <Header></Header>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Header from './view/todo/header.vue'
+import Footer from './view/todo/footer.vue'
+
 export default {
-  data() {
-    return {
-      text: 'abc'
-    }
+  components: {
+    Header,
+    Footer
   }
 }
 </script>
