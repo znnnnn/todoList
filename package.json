@@ -1,0 +1,33 @@
+{
+  "name": "todolist",
+  "version": "0.0.1",
+  "description": "a simple todoList APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MR-zn/todoList.git"
+  },
+  "keywords": [
+    "todoList"
+  ],
+  "author": "mr-zn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MR-zn/todoList/issues"
+  },
+  "homepage": "https://github.com/MR-zn/todoList#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "webpack-cli": "^3.1.0",
+    "vue-loader": "^15.3.0",
+    "webpack": "^4.16.5",
+    "fsevents": "*"
+  }
+}
