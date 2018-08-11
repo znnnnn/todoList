@@ -25,9 +25,8 @@
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
-    "webpack-cli": "^3.1.0",
     "vue-loader": "^15.3.0",
     "webpack": "^4.16.5",
-    "fsevents": "*"
+    "webpack-cli": "^3.1.0"
   }
 }
