@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/MR-zn/todoList#readme",
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
