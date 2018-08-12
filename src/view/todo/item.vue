@@ -1,11 +1,11 @@
 <template>
-  <div :class="['todo-item', todo.completed ? 'comleted' : '']">
+  <div :class="['todo-item', todo.completed ? 'completed' : '']">
     <input type="checkbox"
            class="toggle"
            v-model="todo.completed">
     <label>{{todo.content}}</label>
     <button class="destory"
-            @click="deleteTodo"></button>
+            v-bind:click="deleteTodo"></button>
   </div>
 </template>
 
@@ -18,7 +18,9 @@ export default {
     }
   },
   methods: {
-    deteleTodo() { }
+    deleteTodo() {
+      this.$emit('del', this.todo.id)
+    }
   }
 }
 </script>
@@ -30,11 +32,9 @@ export default {
   font-size: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
-
-.todo-item:hover .destroy:after {
+.todo-item:hover .destory:after {
   content: "×";
 }
-
 .todo-item label {
   white-space: pre-line;
   word-break: break-all;
@@ -44,37 +44,29 @@ export default {
   line-height: 1.2;
   transition: color 0.4s;
 }
-
 .todo-item.completed label {
   color: #d9d9d9;
   text-decoration: line-through;
 }
-
 .toggle {
   text-align: center;
   width: 40px;
   height: 40px;
-  line-height: 40px;
   position: absolute;
   top: 0;
   bottom: 0;
   margin: auto 0;
   border: none;
-  appearance: none;
+  -webkit-appearance: none;
   outline: none;
-  padding-left: 5px;
-  cursor: pointer;
 }
-
 .toggle:after {
   content: url("../../assets/images/round.svg");
 }
-
 .toggle:checked:after {
   content: url("../../assets/images/done.svg");
 }
-
-.destroy {
+.destory {
   position: absolute;
   top: 0;
   right: 10px;
@@ -87,7 +79,7 @@ export default {
   margin-bottom: 11px;
   transition: color 0.2s ease-out;
   background-color: transparent;
-  appearance: none;
+  -webkit-appearance: none;
   border-width: 0;
   cursor: pointer;
   outline: none;
