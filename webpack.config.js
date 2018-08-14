@@ -108,7 +108,6 @@ if (isDev) {
   config.plugins.push(
     new ExtractTextWebapckPlugin('styles.[md5:contenthash:hex:20].css')),
   config.optimization = {
-
     splitChunks: {
       cacheGroups: {
         commons: {

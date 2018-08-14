@@ -1,8 +1,6 @@
 const path = require('path')
-const HTMLPlugin = require('html-webpack-plugin')
-const {
-  VueLoaderPlugin
-} = require('vue-loader')
+const createVueLoaderOptions = require('./vue-loader.config');
+
 const webpack = require('webpack')
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -11,12 +9,13 @@ const config = {
   entry: path.resolve(__dirname, '../src/main.js'),
   output: {
     filename: 'bundle.[hash:8].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules: [{
       test: /\.vue$/,
-      loader: 'vue-loader'
+      loader: 'vue-loader',
+      options: createVueLoaderOptions(isDev)
     },
     {
       test: /\.(js|jsx)$/,
@@ -43,16 +42,12 @@ const config = {
         loader: 'url-loader',
         options: {
           limit: 1024,
-          name: 'resources/[path][name]-[md5:contenthash:hex:8].[ext]'
+          name: 'resources/[path][name].[ext]'
         }
       }]
     }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new HTMLPlugin()
-  ],
   mode: process.env.NODE_ENV || 'production'
 }
 
