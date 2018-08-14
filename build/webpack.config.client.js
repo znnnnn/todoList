@@ -8,7 +8,7 @@ const {
 } = require('vue-loader')
 
 const merge = require('webpack-merge')
-const baseConfig = require('./webpack.config.base');
+const baseConfig = require('./webpack.config.base')
 const isDev = process.env.NODE_ENV === 'development'
 
 const defaultPlugins = [
@@ -50,7 +50,10 @@ if (isDev) {
       }]
     },
     devServer,
-    plugins: [new webpack.HotModuleReplacementPlugin(),
+    plugins: [
+      new VueLoaderPlugin(),
+      new HTMLPlugin(),
+      new webpack.HotModuleReplacementPlugin()
       // new webpack.NoEmitOnErrorsPlugin()
     ]
   })
