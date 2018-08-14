@@ -34,7 +34,7 @@ export default {
     }
   },
   computed: {
-    unFinishedTodoLength(){
+    unFinishedTodoLength() {
       return this.todos.filter(todo => !todo.completed).length
     }
   },
@@ -44,7 +44,7 @@ export default {
     },
     clearAllCompleted() {
       this.$emit('clearAllCompleted')
-    },
+    }
   }
 }
 </script>

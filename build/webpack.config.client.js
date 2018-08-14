@@ -4,66 +4,13 @@ const {
 } = require('vue-loader')
 const HTMLPlugin = require('html-webpack-plugin')
 const ExtractTextWebapckPlugin = require('extract-text-webpack-plugin')
+const merge = require('webpack-merge')
 
 const webpack = require('webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const config = {
-  target: 'web',
-  entry: path.resolve(__dirname, 'src/main.js'),
-  output: {
-    filename: 'bundle.[hash:8].js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  module: {
-    rules: [{
-      test: /\.vue$/,
-      loader: 'vue-loader'
-    },
-    {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    },
-    {
-      test: /\.styl/,
-      use: [
-        'style-loader',
-        'css-loader',
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        },
-        'stylus-loader'
-      ]
-    },
-    {
-      test: /\.(gif|jpg|jpeg|png|svg)$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: 1024,
-          name: '[name].[ext]'
-        }
-      }]
-    }
-    ]
-  },
-  plugins: [
-    // make sure to include the plugin for the magic
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: isDev ? '"development"' : '"production"'
-      }
-    }),
-    new VueLoaderPlugin(),
-    new HTMLPlugin()
-  ],
-  mode: 'development'
-}
+let config
 
 if (isDev) {
   config.module.rules.push({
