@@ -25,6 +25,21 @@ export default () => {
     mode: 'history',
     base: process.env.NODE_ENV === 'production' ? process.env.PROXY_PATH : '',
     linkActiveClass: 'active-link',
-    linkExactActiveClass: 'exact-active-link'
+    linkExactActiveClass: 'exact-active-link',
+    scrollBehavior(to, from, savedPosition) {
+      // console.log(to, from, savedPosition)
+      if (savedPosition) {
+        return savedPosition
+      } else {
+        return { x: 0, y: 0 }
+      }
+    },
+    fallback: true
+    // parseQuery(query) {
+
+    // },
+    // stringifyQuery() {
+
+    // }
   })
 }

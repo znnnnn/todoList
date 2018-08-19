@@ -99,7 +99,7 @@ if (isDev) {
             test: /node_modules/,
             chunks: 'initial',
             name: 'vendor',
-            name: 'runtime',
+            name: 'runtime', // eslint-disable-line no-alert
             priority: 10,
             enforce: true
           }

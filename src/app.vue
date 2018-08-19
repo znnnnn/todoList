@@ -27,6 +27,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+* {
+  transition: 0.2s all
+}
+
 #app {
   position: absolute;
   left: 0;
@@ -36,7 +41,7 @@ export default {
 }
 
 .container{
-	margin-top: 10%;
+	margin-top: 15%;
 }
 
 #cover {
