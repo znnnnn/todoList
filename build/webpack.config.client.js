@@ -19,7 +19,9 @@ const defaultPlugins = [
     }
   }),
   new VueLoaderPlugin(),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 let config
@@ -51,6 +53,15 @@ if (isDev) {
     },
     devServer,
     plugins: [new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: isDev ? '"development"' : '"production"'
+        }
+      }),
+      new VueLoaderPlugin(),
+      new HTMLPlugin({
+        template: path.join(__dirname, 'template.html')
+      })
       // new webpack.NoEmitOnErrorsPlugin()
     ]
   })
