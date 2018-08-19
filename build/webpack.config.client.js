@@ -19,7 +19,9 @@ const defaultPlugins = [
     }
   }),
   new VueLoaderPlugin(),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 let config
@@ -27,6 +29,7 @@ const devServer = {
   // 很重要
   useLocalIp: true,
   host: '0.0.0.0',
+  historyApiFallback: true,
   port: '9797',
   overlay: {
     errors: true
@@ -50,11 +53,16 @@ if (isDev) {
       }]
     },
     devServer,
-    plugins: [
+    plugins: [new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: isDev ? '"development"' : '"production"'
+        }
+      }),
       new VueLoaderPlugin(),
-      new HTMLPlugin(),
-      new webpack.HotModuleReplacementPlugin()
-      // new webpack.NoEmitOnErrorsPlugin()
+      new HTMLPlugin({
+        template: path.join(__dirname, 'template.html')
+      })
     ]
   })
 } else {
@@ -66,6 +74,7 @@ if (isDev) {
     output: {
       filename: '[name].[chunkhash:8].js'
     },
+    historyApiFallback: true,
     module: {
       rules: [{
         test: /\.css$/,

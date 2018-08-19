@@ -3,7 +3,10 @@
 		<div id="cover"></div>
 		<div class="container">
 			<Header></Header>
-			<Todo></Todo>
+			<!-- <Todo></Todo> -->
+      <router-link to="/app">app</router-link>
+      <router-link to="/login">login</router-link>
+      <router-view></router-view>
 			<Footer></Footer>
 		</div>
 	</div>
