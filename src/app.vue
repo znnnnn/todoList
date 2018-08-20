@@ -6,7 +6,9 @@
       <!-- <Todo></Todo> -->
       <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
       <Footer></Footer>
     </div>
   </div>
@@ -27,10 +29,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-* {
-  transition: 0.2s all;
-}
-
 #app {
   position: absolute;
   left: 0;
