@@ -1,15 +1,15 @@
 <template>
-	<div id="app">
-		<div id="cover"></div>
-		<div class="container">
-			<Header></Header>
-			<!-- <Todo></Todo> -->
-      <router-link to="/app">app</router-link>
+  <div id="app">
+    <div id="cover"></div>
+    <div class="container">
+      <Header></Header>
+      <!-- <Todo></Todo> -->
+      <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
       <router-view></router-view>
-			<Footer></Footer>
-		</div>
-	</div>
+      <Footer></Footer>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -27,9 +27,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
 * {
-  transition: 0.2s all
+  transition: 0.2s all;
 }
 
 #app {
@@ -40,8 +39,8 @@ export default {
   bottom: 0;
 }
 
-.container{
-	margin-top: 15%;
+.container {
+  margin-top: 15%;
 }
 
 #cover {

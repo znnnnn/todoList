@@ -13,6 +13,7 @@
           :todos="todos"
           @toggle="toggleFilter"
           @clearAllCompleted="clearAllCompleted" />
+          <router-view></router-view>
   </section>
 </template>
 

@@ -29,8 +29,10 @@ const devServer = {
   // 很重要
   useLocalIp: true,
   host: '0.0.0.0',
-  historyApiFallback: true,
-  port: '9797',
+  historyApiFallback: {
+    index: '/public/index.html'
+  },
+  port: '8000',
   overlay: {
     errors: true
   },
@@ -74,7 +76,9 @@ if (isDev) {
     output: {
       filename: '[name].[chunkhash:8].js'
     },
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: '/public/index.html'
+    },
     module: {
       rules: [{
         test: /\.css$/,

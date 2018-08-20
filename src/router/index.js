@@ -10,10 +10,21 @@ const routes = [
   },
   {
     path: '/app',
-    component: Todo
+    component: Todo,
+    name: 'app',
+    meta: {
+      title: 'this is app',
+      description: ''
+    },
+    children: [
+      {
+        path: 'test',
+        component: Login
+      }
+    ]
   },
   {
-    path: '/login/exact',
+    path: '/login',
     component: Login
   }
 
