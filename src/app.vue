@@ -35,6 +35,9 @@ export default {
   },
   computed: {
     count() {
+      console.log(this.$store)
+      console.log(this.$store.state)
+      console.log(this.$store.state.count)
       return this.$store.state.count
     }
   }
