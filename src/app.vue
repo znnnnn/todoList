@@ -18,7 +18,7 @@
 
 <script>
 import {
-  mapState
+  mapState, mapGetters
   // mapGetters
 } from 'vuex'
 
@@ -40,13 +40,28 @@ export default {
     }, 1000)
   },
   computed: {
-    ...mapState(['count']),
+
+    // 第一种
+    // ...mapState(['count']),
+
+    // 第二种
+    // ...mapState({
+    //   count: 'count'
+    // }),
+
+    // 第三种
+    ...mapState({
+      count: (state) => state.count
+    }),
+
+    // 第四种
     // count() {
     //   return this.$store.state.count
     // },
-    fullName() {
-      return this.$store.getters.fullName
-    }
+
+    ...mapGetters({
+      fullName: 'fullName'
+    })
   }
 }
 </script>
