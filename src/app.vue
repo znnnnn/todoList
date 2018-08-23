@@ -18,7 +18,10 @@
 
 <script>
 import {
-  mapState, mapGetters
+  mapState,
+  mapGetters,
+  mapActions,
+  mapMutations
   // mapGetters
 } from 'vuex'
 
@@ -36,8 +39,19 @@ export default {
     // console.log(this.$store)
     let i = 1
     setInterval(() => {
-      this.$store.commit('updateCount', i++)
+      // this.$store.commit('updateCount', i++)
+      this.updateCount(i++)
     }, 1000)
+
+    // this.$store.dispatch('updateCountAsync', {
+    this.updateCountAsync({
+      num: 5,
+      time: 2000
+    })
+  },
+  methods: {
+    ...mapActions(['updateCountAsync']),
+    ...mapMutations(['updateCount'])
   },
   computed: {
 
