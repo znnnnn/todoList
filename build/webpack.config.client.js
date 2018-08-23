@@ -40,7 +40,6 @@ const devServer = {
   open: true,
   // 热更新
   hot: true
-  // historyFallback: {}
 }
 if (isDev) {
   config = merge(baseConfig, {
@@ -76,9 +75,9 @@ if (isDev) {
     output: {
       filename: '[name].[chunkhash:8].js'
     },
-    historyApiFallback: {
-      index: '/public/index.html'
-    },
+    // historyApiFallback: {
+    //   index: '/public/index.html'
+    // },
     module: {
       rules: [{
         test: /\.css$/,

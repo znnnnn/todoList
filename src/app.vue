@@ -4,6 +4,7 @@
     <div class="container">
       <Header></Header>
       <p>{{count}}</p>
+      <p>{{fullName}}</p>
       <!-- <Todo></Todo> -->
       <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
@@ -16,6 +17,11 @@
 </template>
 
 <script>
+import {
+  mapState
+  // mapGetters
+} from 'vuex'
+
 import Header from './view/todo/header.vue'
 import Footer from './view/todo/footer.vue'
 import Todo from './view/todo/todo.vue'
@@ -27,18 +33,19 @@ export default {
     Todo
   },
   mounted() {
-    console.log(this.$store)
+    // console.log(this.$store)
     let i = 1
     setInterval(() => {
       this.$store.commit('updateCount', i++)
     }, 1000)
   },
   computed: {
-    count() {
-      console.log(this.$store)
-      console.log(this.$store.state)
-      console.log(this.$store.state.count)
-      return this.$store.state.count
+    ...mapState(['count']),
+    // count() {
+    //   return this.$store.state.count
+    // },
+    fullName() {
+      return this.$store.getters.fullName
     }
   }
 }
