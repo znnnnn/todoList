@@ -39,11 +39,17 @@ export default {
     // console.log(this.$store)
     let i = 1
     setInterval(() => {
+      // mutations方法一
       // this.$store.commit('updateCount', i++)
+
+      // mutations方法二
       this.updateCount(i++)
     }, 1000)
 
+    // actions方法一
     // this.$store.dispatch('updateCountAsync', {
+
+    // actions方法二
     this.updateCountAsync({
       num: 5,
       time: 2000
