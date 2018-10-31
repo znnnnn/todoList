@@ -17,6 +17,12 @@ import createStore from './store/index'
 const router = createRouter()
 const store = createStore()
 
+store.registerModule('c', {
+  state: {
+    text: 3
+  }
+})
+
 new Vue({
   router,
   store,

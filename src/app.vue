@@ -5,6 +5,10 @@
       <Header></Header>
       <p>{{count}}</p>
       <p>{{fullName}}</p>
+      <p>
+        {{textA}}  {{textPlus}}
+      </p>
+      <p> textC:{{textC}} </p>
       <!-- <Todo></Todo> -->
       <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
@@ -40,10 +44,13 @@ export default {
     let i = 1
     setInterval(() => {
       // mutations方法一
-      // this.$store.commit('updateCount', i++)
+      this.$store.commit('updateCount', {
+        num: i++,
+        num2: 2
+      })
 
       // mutations方法二
-      this.updateCount(i++)
+      // this.updateCount(i++)
     }, 1000)
 
     // actions方法一
@@ -54,10 +61,14 @@ export default {
       num: 5,
       time: 2000
     })
+
+    // this['a/updateText']('123')
+    this['a/add']()
+    this['b/testAction']()
   },
   methods: {
-    ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount'])
+    ...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
+    ...mapMutations(['updateCount', 'a/updateText'])
   },
   computed: {
 
@@ -71,7 +82,9 @@ export default {
 
     // 第三种
     ...mapState({
-      count: (state) => state.count
+      count: (state) => state.count,
+      textA: state => state.a.text,
+      textC: state => state.c.text
     }),
 
     // 第四种
@@ -80,7 +93,8 @@ export default {
     // },
 
     ...mapGetters({
-      fullName: 'fullName'
+      'fullName': 'fullName',
+      textPlus: 'a/textPlus'
     })
   }
 }
