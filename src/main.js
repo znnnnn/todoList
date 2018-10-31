@@ -25,22 +25,22 @@ store.registerModule('c', {
 
 store.unregisterModule('c')
 
-// 当getter返回的值有变化，返回回调函数
-store.watch((state) => state.count + 1)
+// // 当getter返回的值有变化，返回回调函数
+// store.watch((state) => state.count + 1)
 
-// 当mutation调用时，则返回回调函数
-store.subscribe((mutation, state) => {
-  // mutation的名称
-  console.log(mutation.type)
-  // mutation的值
-  console.log(mutation.payload)
-})
+// // 当mutation调用时，则返回回调函数
+// store.subscribe((mutation, state) => {
+//   // mutation的名称
+//   console.log(mutation.type)
+//   // mutation的值
+//   console.log(mutation.payload)
+// })
 
-// 当action调用时，返回回调函数
-store.subscribeAction((action, state) => {
-  console.log(action.type)
-  console.log(action.payload)
-})
+// // 当action调用时，返回回调函数
+// store.subscribeAction((action, state) => {
+//   console.log(action.type)
+//   console.log(action.payload)
+// })
 
 new Vue({
   router,
