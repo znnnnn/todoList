@@ -5,10 +5,6 @@
       <Header></Header>
       <p>{{count}}</p>
       <p>{{fullName}}</p>
-      <p>
-        {{textA}}  {{textPlus}}
-      </p>
-      <p> textC:{{textC}} </p>
       <!-- <Todo></Todo> -->
       <router-link :to="{name: 'app'}">app</router-link>
       <router-link to="/login">login</router-link>
@@ -41,17 +37,17 @@ export default {
   },
   mounted() {
     // console.log(this.$store)
-    let i = 1
-    setInterval(() => {
-      // mutations方法一
-      this.$store.commit('updateCount', {
-        num: i++,
-        num2: 2
-      })
+    // let i = 1
+    // setInterval(() => {
+    //   // mutations方法一
+    //   this.$store.commit('updateCount', {
+    //     num: i++,
+    //     num2: 2
+    //   })
 
-      // mutations方法二
-      // this.updateCount(i++)
-    }, 1000)
+    //   // mutations方法二
+    //   // this.updateCount(i++)
+    // }, 1000)
 
     // actions方法一
     // this.$store.dispatch('updateCountAsync', {
@@ -61,14 +57,10 @@ export default {
       num: 5,
       time: 2000
     })
-
-    // this['a/updateText']('123')
-    this['a/add']()
-    this['b/testAction']()
   },
   methods: {
-    ...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
-    ...mapMutations(['updateCount', 'a/updateText'])
+    ...mapActions(['updateCountAsync']),
+    ...mapMutations(['updateCount'])
   },
   computed: {
 
@@ -82,9 +74,7 @@ export default {
 
     // 第三种
     ...mapState({
-      count: (state) => state.count,
-      textA: state => state.a.text,
-      textC: state => state.c.text
+      count: (state) => state.count
     }),
 
     // 第四种
@@ -92,9 +82,9 @@ export default {
     //   return this.$store.state.count
     // },
 
+    // vueX热更替失败
     ...mapGetters({
-      'fullName': 'fullName',
-      textPlus: 'a/textPlus'
+      'fullName': 'fullName'
     })
   }
 }

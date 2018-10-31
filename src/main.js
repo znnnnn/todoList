@@ -23,6 +23,8 @@ store.registerModule('c', {
   }
 })
 
+store.unregisterModule('c')
+
 new Vue({
   router,
   store,
